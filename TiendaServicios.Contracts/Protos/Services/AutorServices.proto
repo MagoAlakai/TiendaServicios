@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package Protos.Services;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Services";
+
+import "Protos/Dto/Request/GetAutorRequest.proto";
+import "Protos/Dto/Response/GetAutorResponse.proto";
+
+import "Protos/Dto/Request/GetAllAutorsRequest.proto";
+import "Protos/Dto/Response/AutorModelListResponse.proto";
+
+import "Protos/Dto/Request/AddAutorRequest.proto";
+import "Protos/Dto/Response/AddAutorResponse.proto";
+
+import "Protos/Dto/Request/UpdateAutorRequest.proto";
+import "Protos/Dto/Response/UpdateAutorResponse.proto";
+
+import "Protos/Dto/Request/DeleteAutorRequest.proto";
+import "Protos/Dto/Response/DeleteAutorResponse.proto";
+
+service AutorServices 
+{
+	// GetAutor
+	rpc GetAutor (Protos.Dto.Request.GetAutorRequest)
+	returns (Protos.Dto.Response.GetAutorResponse);
+
+	// GetAllAutors
+	rpc GetAllAutors (Protos.Dto.Request.GetAllAutorsRequest)
+	returns (Protos.Dto.Response.AutorModelListResponse);
+
+	// AddAutor
+	rpc AddAutor (Protos.Dto.Request.AddAutorRequest)
+	returns (Protos.Dto.Response.AddAutorResponse);
+
+	// UpdateAutor
+	rpc UpdateAutor (Protos.Dto.Request.UpdateAutorRequest)
+	returns (Protos.Dto.Response.UpdateAutorResponse);
+
+	// DeleteAutor
+	rpc DeleteAutor (Protos.Dto.Request.DeleteAutorRequest)
+	returns (Protos.Dto.Response.DeleteAutorResponse);
+}

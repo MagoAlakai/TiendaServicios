@@ -1,34 +1,19 @@
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddDbContext<ContextoAutor>(options
+    => options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(ContextoAutor))));
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-// Add services to the container.
-builder.Services.AddGrpc(opt =>
-    opt.EnableDetailedErrors = true);
+builder.Services.AddGrpc(opt => opt.EnableDetailedErrors = true);
 
-builder.Services.AddDbContext<ContextoAutor>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString("ConexionDatabase"));
-});
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+WebApplication app = builder.Build();
+app.UseDeveloperExceptionPage();
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.MapGrpcService<AutorService>();
+app.UseRouting();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapGrpcService<AutorService>();
+    endpoints.MapGet("/", async context
+        => await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client."));
+});
 
 app.Run();

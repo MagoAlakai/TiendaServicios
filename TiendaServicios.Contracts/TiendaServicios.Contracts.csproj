@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.1" />
+    <PackageReference Include="Grpc.Core" Version="2.46.3" />
+    <PackageReference Include="Grpc.Tools" Version="2.46.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+	<ItemGroup Label="Services">
+		<Protobuf Include="Protos\Services\AutorServices.proto" GrpcServices="Both" />
+	</ItemGroup>
+
+	<ItemGroup Label="DTO.Requests">
+		<Protobuf Include="Protos\Dto\Request\AddAutorRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Request\GetAutorRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Request\GetAllAutorsRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Request\UpdateAutorRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Request\DeleteAutorRequest.proto" GrpcServices="None" />
+	</ItemGroup>
+
+	<ItemGroup Label="DTO.Responses">
+		<Protobuf Include="Protos\Dto\Response\AddAutorResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Response\DeleteAutorResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Response\AutorModelListResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Response\GetAutorResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Response\UpdateAutorResponse.proto" GrpcServices="None" />
+	</ItemGroup>
+
+	<ItemGroup Label="Models">
+		<Protobuf Include="Protos\Models\AutorModel.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Models\GradoAcademicoModel.proto" GrpcServices="None" />
+	</ItemGroup>
+
+</Project>

@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package Contracts.Protos.Models;
-option csharp_namespace = "TiendaService.Api.Autor.Contracts.Protos.Models";
+package Protos.Models;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Models";
 
 import "google/protobuf/timestamp.proto";
 

@@ -1,80 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="Contracts\Protos\Services\AutorServices.proto" />
-	</ItemGroup>
-	
-	<ItemGroup>
-		<None Remove="Contracts\Protos\Dto\Request\AddAutorRequest.proto" />
-		<None Remove="Contracts\Protos\Dto\Request\GetAutorRequest.proto" />
-		<None Remove="Contracts\Protos\Dto\Request\GetAllAutorsRequest.proto" />
-		<None Remove="Contracts\Protos\Dto\Request\UpdateAutorRequest.proto " />
-		<None Remove="Contracts\Protos\Dto\Request\DeleteAutorRequest.proto" />
-	</ItemGroup>
-	
-    <ItemGroup>
-      <None Remove="Contracts\Protos\Dto\Response\AddAutorResponse.proto" />
-      <None Remove="Contracts\Protos\Dto\Response\AutorModelListResponse.proto" />
-      <None Remove="Contracts\Protos\Dto\Response\DeleteAutorResponse.proto" />
-      <None Remove="Contracts\Protos\Dto\Response\GetAutorResponse.proto" />
-      <None Remove="Contracts\Protos\Dto\Response\UpdateAutorResponse.proto" />
-    </ItemGroup>
-
-	<ItemGroup>
-		<None Remove="Contracts\Protos\Models\AutorModel.proto" />
-		<None Remove="Contracts\Protos\Models\GradoAcademicoModel.proto" />
-	</ItemGroup>
-
-    <ItemGroup>
-    <Content Include="Properties\launchSettings.json" />
-    </ItemGroup>
-
-    <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore" Version="2.46.0" />
-    <PackageReference Include="Mapster" Version="7.3.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
-	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
-		<PrivateAssets>all</PrivateAssets>
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	</PackageReference>
-	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
-		<PrivateAssets>all</PrivateAssets>
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	</PackageReference>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.4" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
-    </ItemGroup>
-	
-    <ItemGroup>
-        <Protobuf Include="Contracts\Protos\Services\AutorServices.proto" GrpcServices="Server" />
-    </ItemGroup>
-	
-    <ItemGroup>
-	    <Protobuf Include="Contracts\Protos\Dto\Request\AddAutorRequest.proto" GrpcServices="Server" />
-	    <Protobuf Include="Contracts\Protos\Dto\Request\GetAutorRequest.proto" GrpcServices="Server" />
-	    <Protobuf Include="Contracts\Protos\Dto\Request\GetAllAutorsRequest.proto" GrpcServices="Server" />
-	    <Protobuf Include="Contracts\Protos\Dto\Request\UpdateAutorRequest.proto" GrpcServices="Server" />
-	    <Protobuf Include="Contracts\Protos\Dto\Request\DeleteAutorRequest.proto" GrpcServices="Server" />	
-    </ItemGroup>
-	
-	<ItemGroup>
-		<Protobuf Include="Contracts\Protos\Dto\Response\AddAutorResponse.proto" GrpcServices="Server" />
-		<Protobuf Include="Contracts\Protos\Dto\Response\DeleteAutorResponse.proto" GrpcServices="Server" />
-		<Protobuf Include="Contracts\Protos\Dto\Response\AutorModelListResponse.proto" GrpcServices="Server" />
-		<Protobuf Include="Contracts\Protos\Dto\Response\GetAutorResponse.proto" GrpcServices="Server" />
-		<Protobuf Include="Contracts\Protos\Dto\Response\UpdateAutorResponse.proto" GrpcServices="Server" />
+	  <None Remove="Infrastructure\tienda-svc.pfx" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Protobuf Include="Contracts\Protos\Models\AutorModel.proto" GrpcServices="Server" />
-		<Protobuf Include="Contracts\Protos\Models\GradoAcademicoModel.proto" GrpcServices="Server" />
+	  <Content Include="Infrastructure\tienda-svc.pfx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Properties\launchSettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Grpc.AspNetCore" Version="2.46.0" />
+		<PackageReference Include="Mapster" Version="7.3.0" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.4" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\TiendaServicios.Contracts\TiendaServicios.Contracts.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package Protos.Models;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Models";
+
+import "google/protobuf/timestamp.proto";
+import "Protos/Models/GradoAcademicoModel.proto";
+
+message AutorModel
+{
+    int32 AutorLibroId = 1;
+    string Nombre = 2;
+    string Apellido = 3;
+    google.protobuf.Timestamp FechaNacimiento = 4;
+    repeated Protos.Models.GradoAcademicoModel ListaGradoAcademico = 5;
+    string AutorLibroGuid = 6;
+}

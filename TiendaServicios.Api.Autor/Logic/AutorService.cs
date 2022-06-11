@@ -1,4 +1,5 @@
 ﻿namespace TiendaServicios.Api.Autor.Logic;
+
 public class AutorService : AutorServices.AutorServicesBase
 {
     private readonly ContextoAutor _autorsContext;
@@ -61,7 +62,8 @@ public class AutorService : AutorServices.AutorServicesBase
     {
         GetAutorRequest add_autor_request = new()
         {
-            AutorLibroGuid = request.AutorLibroGuid
+            // todo
+            AutorLibroGuid = request.AutorModel.AutorLibroGuid
         };
         GetAutorResponse get_autor_response = await GetAutor(add_autor_request, context);
 

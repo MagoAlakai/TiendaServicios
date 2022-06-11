@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.46.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TiendaServicios.Contracts\TiendaServicios.Contracts.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Contracts\Protos\Services\AutorServices.proto" GrpcServices="Client" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Contracts\Protos\Dto\Request\AddAutorRequest.proto" GrpcServices="Client" />
+		<Protobuf Include="Contracts\Protos\Dto\Request\GetAutorRequest.proto" GrpcServices="Client" />
+		<Protobuf Include="Contracts\Protos\Dto\Request\GetAllAutorsRequest.proto" GrpcServices="Client" />
+		<Protobuf Include="Contracts\Protos\Dto\Request\UpdateAutorRequest.proto" GrpcServices="Client" />
+		<Protobuf Include="Contracts\Protos\Dto\Request\DeleteAutorRequest.proto" GrpcServices="Client" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Contracts\Protos\Dto\Response\AddAutorResponse.proto" GrpcServices="Client" />
+		<Protobuf Include="Contracts\Protos\Dto\Response\DeleteAutorResponse.proto" GrpcServices="Client" />
+		<Protobuf Include="Contracts\Protos\Dto\Response\AutorModelListResponse.proto" GrpcServices="Client" />
+		<Protobuf Include="Contracts\Protos\Dto\Response\GetAutorResponse.proto" GrpcServices="Client" />
+		<Protobuf Include="Contracts\Protos\Dto\Response\UpdateAutorResponse.proto" GrpcServices="Client" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Protobuf Include="Contracts\Protos\Models\AutorModel.proto" GrpcServices="Client" />
+		<Protobuf Include="Contracts\Protos\Models\GradoAcademicoModel.proto" GrpcServices="Client" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Certificates\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="..\TiendaServicios.Api.Autor\Infrastructure\tienda-svc.crt" Link="Certificates\tienda-svc.crt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+</Project>
