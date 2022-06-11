@@ -1,0 +1,13 @@
+﻿global using Contracts.Protos.Dto.Response;
+global using Grpc.Core;
+global using Mapster;
+global using MediatR;
+global using Microsoft.EntityFrameworkCore;
+global using TiendaService.Api.Autor.Contracts.Protos.Dto.Response;
+global using TiendaService.Api.Autor.Contracts.Protos.Models;
+global using Contracts.Protos.Services;
+global using TiendaServicios.Api.Autor.Contracts.Protos.Dto.Request;
+global using TiendaServicios.Api.Autor.Database;
+global using TiendaServicios.Api.Autor.Logic;
+global using TiendaServicios.Api.Autor.Models;
+global using TiendaServicios.Api.Autor.Mapping;

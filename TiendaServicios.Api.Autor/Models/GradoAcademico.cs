@@ -7,6 +7,5 @@ public class GradoAcademico
     public string? CentroAcademico { get; set; }
     public DateTime? FechaGrado { get; set; }
     public int? AutorLibroId { get; set; }
-    public AutorLibro? AutorLibro { get; set; }
     public Guid GradoAcademicoGuid { get; set; }
 }

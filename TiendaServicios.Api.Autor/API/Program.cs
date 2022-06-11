@@ -5,14 +5,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// Add services to the container.
+builder.Services.AddGrpc(opt =>
+    opt.EnableDetailedErrors = true);
 
 builder.Services.AddDbContext<ContextoAutor>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("ConexionDatabase"));
 });
-
-builder.Services.AddMediatR(typeof(Nuevo.Manejador).Assembly);
 
 var app = builder.Build();
 
@@ -28,5 +28,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGrpcService<AutorService>();
 
 app.Run();

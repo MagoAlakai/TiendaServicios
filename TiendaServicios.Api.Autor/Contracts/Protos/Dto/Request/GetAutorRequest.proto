@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package Contracts.Protos.Dto.Request;
+option csharp_namespace = "TiendaServicios.Api.Autor.Contracts.Protos.Dto.Request";
+
+message GetAutorRequest {
+	 string AutorLibroGuid = 1;
+}

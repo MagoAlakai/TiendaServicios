@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package Contracts.Protos.Dto.Response;
+option csharp_namespace = "TiendaService.Api.Autor.Contracts.Protos.Dto.Response";
+
+import "Contracts/Protos/Models/AutorModel.proto";
+
+message UpdateAutorResponse {
+	 bool success = 1;
+	 Contracts.Protos.Models.AutorModel AutorModel = 2;
+}

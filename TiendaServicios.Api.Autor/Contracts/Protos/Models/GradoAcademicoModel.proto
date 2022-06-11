@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package Contracts.Protos.Models;
+option csharp_namespace = "TiendaService.Api.Autor.Contracts.Protos.Models";
+
+import "google/protobuf/timestamp.proto";
+
+message GradoAcademicoModel {
+    int32 GradoAcademicooId = 1;
+    string Nombre = 2;
+    string CentroAcademico = 3;
+    google.protobuf.Timestamp FechaGrado = 4;
+    int32 AutorLibroId = 5;
+    string GradoAcademicoGuid = 6;
+}
