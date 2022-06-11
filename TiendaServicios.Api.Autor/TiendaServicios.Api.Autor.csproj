@@ -7,10 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Infrastructure\tienda-svc.pfx" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Content Include="Infrastructure\tienda-svc.pfx">
 	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 	  </Content>
