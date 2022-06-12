@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package Protos.Services;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Services";
+
+//import "Protos/Dto/Request/GetGradoAcademicoRequest.proto";
+//import "Protos/Dto/Response/GetGradoAcademicoResponse.proto";
+
+import "Protos/Dto/Request/AddGradoAcademicoRequest.proto";
+import "Protos/Dto/Response/AddGradoAcademicoResponse.proto";
+
+service GradoAcademicoServices 
+{
+	// GetGradoAcademico
+	//rpc GetGradoAcademico (Protos.Dto.Request.GetGradoAcademicoRequest)
+	//returns (Protos.Dto.Response.GetGradoAcademicoResponse);
+
+	// AddGradoAcademico
+	rpc AddGradoAcademico (Protos.Dto.Request.AddGradoAcademicoRequest)
+	returns (Protos.Dto.Response.AddGradoAcademicoResponse);
+}

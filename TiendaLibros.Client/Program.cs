@@ -16,14 +16,16 @@ using GrpcChannel channel = GrpcChannel.ForAddress("https://tienda-svc:53443", n
 });
 
 AutorServices.AutorServicesClient client = new(channel);
+GradoAcademicoServices.GradoAcademicoServicesClient grado_client = new(channel);
 
-// AddProductAsync
+// AddAutorAsync - AddGradoAcademicoSync
 Console.WriteLine("AddProductAsync started...");
 Thread.Sleep(2000);
 
+// AddGradoAcademicoSync
 GradoAcademicoModel grado_model = new()
 {
-    GradoAcademicoId = 2,
+    GradoAcademicoId = 5,
     Nombre = "Escoles Píes",
     CentroAcademico = "Rosselló 200",
     FechaGrado = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
@@ -31,14 +33,21 @@ GradoAcademicoModel grado_model = new()
     GradoAcademicoGuid = Guid.NewGuid().ToString(),
 };
 
-List<GradoAcademicoModel> ListaGradoAcademico = new();
-ListaGradoAcademico.Add(grado_model);
+AddGradoAcademicoRequest add_grado_request = new()
+{
+    GradoAcademicoModel = grado_model,
+};
 
+AddGradoAcademicoResponse add_grado_response = await grado_client.AddGradoAcademicoAsync(add_grado_request);
+Console.WriteLine($"AddGradoAcademicoAsync Response Success: {add_grado_response.Success}");
+Console.WriteLine($"AddGradoAcademicoAsync Response Model: {add_grado_response.GradoAcademicoModel}");
+
+// AddAutorAsync
 AutorModel autor_model = new()
 {
-    AutorLibroId = 3,
-    Nombre = "Roser",
-    Apellido = "Ros",
+    AutorLibroId = 6,
+    Nombre = "Oihana",
+    Apellido = "Etxeguibel",
     GradoAcademicoGuid = grado_model.GradoAcademicoGuid,
     FechaNacimiento = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
     AutorLibroGuid = Guid.NewGuid().ToString(),

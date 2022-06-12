@@ -17,6 +17,7 @@
 
 	<ItemGroup Label="Services">
 		<Protobuf Include="Protos\Services\AutorServices.proto" GrpcServices="Both" />
+		<Protobuf Include="Protos\Services\GradoAcademicoServices.proto" GrpcServices="Both" />
 	</ItemGroup>
 
 	<ItemGroup Label="DTO.Requests">
@@ -25,6 +26,7 @@
 		<Protobuf Include="Protos\Dto\Request\GetAllAutorsRequest.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Request\UpdateAutorRequest.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Request\DeleteAutorRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Request\AddGradoAcademicoRequest.proto" GrpcServices="None" />
 	</ItemGroup>
 
 	<ItemGroup Label="DTO.Responses">
@@ -33,6 +35,7 @@
 		<Protobuf Include="Protos\Dto\Response\AutorModelListResponse.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Response\GetAutorResponse.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Response\UpdateAutorResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Response\AddGradoAcademicoResponse.proto" GrpcServices="None" />
 	</ItemGroup>
 
 	<ItemGroup Label="Models">

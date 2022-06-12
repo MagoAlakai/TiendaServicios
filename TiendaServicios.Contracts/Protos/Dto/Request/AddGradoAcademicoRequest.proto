@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package Protos.Dto.Request;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Request";
+
+import "Protos/Models/GradoAcademicoModel.proto";
+
+message AddGradoAcademicoRequest
+{
+	Protos.Models.GradoAcademicoModel GradoAcademicoModel = 1;
+}

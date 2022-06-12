@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package Protos.Dto.Response;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Response";
+
+import "Protos/Models/GradoAcademicoModel.proto";
+
+message AddGradoAcademicoResponse
+{
+	bool success = 1;
+	Protos.Models.GradoAcademicoModel GradoAcademicoModel = 2;
+}
