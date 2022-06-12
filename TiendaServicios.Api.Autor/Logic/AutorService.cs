@@ -60,14 +60,7 @@ public class AutorService : AutorServices.AutorServicesBase
 
     public override async Task<AddAutorResponse> AddAutor(AddAutorRequest request, ServerCallContext context)
     {
-        GetAutorRequest add_autor_request = new()
-        {
-            // todo
-            AutorLibroGuid = request.AutorModel.AutorLibroGuid
-        };
-        GetAutorResponse get_autor_response = await GetAutor(add_autor_request, context);
-
-        AutorLibro autor = get_autor_response.AutorModel.MapToAddProductModelFromRequest();
+        AutorLibro autor = request.AutorModel.MapToAddProductModelFromRequest();
 
         _autorsContext.Add(autor);
         await _autorsContext.SaveChangesAsync();

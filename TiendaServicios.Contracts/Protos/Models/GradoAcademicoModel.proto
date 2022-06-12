@@ -6,7 +6,7 @@ option csharp_namespace = "TiendaServicios.Contracts.Protos.Models";
 import "google/protobuf/timestamp.proto";
 
 message GradoAcademicoModel {
-    int32 GradoAcademicooId = 1;
+    int32 GradoAcademicoId = 1;
     string Nombre = 2;
     string CentroAcademico = 3;
     google.protobuf.Timestamp FechaGrado = 4;

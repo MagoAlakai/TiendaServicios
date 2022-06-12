@@ -1,12 +1,19 @@
-﻿namespace TiendaServicios.Api.Autor.Mapping
+﻿using Google.Protobuf.WellKnownTypes;
+
+namespace TiendaServicios.Api.Autor.Mapping;
+public static class AddAutorStaticMappingFromRequest
 {
-    public static class AddAutorStaticMappingFromRequest
+    public static AutorLibro MapToAddProductModelFromRequest(this AutorModel autor_model)
     {
-        public static AutorLibro MapToAddProductModelFromRequest(this AutorModel autor_model)
-        {
-            TypeAdapterConfig<AddAutorRequest, AutorLibro>.NewConfig().IgnoreNullValues(true);
-            AutorLibro autor_libro = TypeAdapter.Adapt<AutorModel, AutorLibro>(autor_model);
-            return autor_libro;
-        }
+        TypeAdapterConfig<AutorModel, AutorLibro>.NewConfig().IgnoreNullValues(true)
+            .Map(x => x.AutorLibroId, src => src.AutorLibroId)
+            .Map(x => x.Nombre, src => src.Nombre)
+            .Map(x => x.Apellido, src => src.Apellido)
+            .Map(x => x.AutorLibroGuid, src => src.AutorLibroGuid)
+            .Map(x => x.GradoAcademicoGuid, src => src.GradoAcademicoGuid)
+            .Map(x => x.FechaNacimiento, src => src.FechaNacimiento.ToDateTime().ToUniversalTime());
+        DefaultStaticMappingRules.SetDefaultMappings();
+        AutorLibro autor_libro = TypeAdapter.Adapt<AutorModel, AutorLibro>(autor_model);
+        return autor_libro;
     }
 }

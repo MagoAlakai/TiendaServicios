@@ -6,6 +6,6 @@ public class AutorLibro
     public string? Nombre { get; set; }
     public string? Apellido { get; set; }
     public DateTime? FechaNacimiento { get; set; }
-    public ICollection<GradoAcademico>? ListaGradoAcademico { get; set; }
-    public Guid AutorLibroGuid { get; set; }
+    public string? GradoAcademicoGuid { get; set; }
+    public string? AutorLibroGuid { get; set; }
 }

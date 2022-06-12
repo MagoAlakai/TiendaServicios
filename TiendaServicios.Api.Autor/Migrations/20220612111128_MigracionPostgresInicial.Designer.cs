@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TiendaServicios.Api.Autor.Database;
@@ -11,9 +12,10 @@ using TiendaServicios.Api.Autor.Database;
 namespace TiendaServicios.Api.Autor.Migrations
 {
     [DbContext(typeof(ContextoAutor))]
-    partial class ContextoAutorModelSnapshot : ModelSnapshot
+    [Migration("20220612111128_MigracionPostgresInicial")]
+    partial class MigracionPostgresInicial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,11 +35,14 @@ namespace TiendaServicios.Api.Autor.Migrations
                     b.Property<string>("Apellido")
                         .HasColumnType("text");
 
-                    b.Property<Guid>("AutorLibroGuid")
-                        .HasColumnType("uuid");
+                    b.Property<string>("AutorLibroGuid")
+                        .HasColumnType("text");
 
                     b.Property<DateTime?>("FechaNacimiento")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("GradoAcademicoGuid")
+                        .HasColumnType("text");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("text");
@@ -58,40 +63,21 @@ namespace TiendaServicios.Api.Autor.Migrations
                     b.Property<int?>("AutorLibroId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("AutorLibroIdId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("CentroAcademico")
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("FechaGrado")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("GradoAcademicoGuid")
-                        .HasColumnType("uuid");
+                    b.Property<string>("GradoAcademicoGuid")
+                        .HasColumnType("text");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("text");
 
                     b.HasKey("GradoAcademicoId");
 
-                    b.HasIndex("AutorLibroId");
-
                     b.ToTable("GradoAcademico");
-                });
-
-            modelBuilder.Entity("TiendaServicios.Api.Autor.Models.GradoAcademico", b =>
-                {
-                    b.HasOne("TiendaServicios.Api.Autor.Models.AutorLibro", "AutorLibro")
-                        .WithMany("ListaGradoAcademico")
-                        .HasForeignKey("AutorLibroId");
-
-                    b.Navigation("AutorLibro");
-                });
-
-            modelBuilder.Entity("TiendaServicios.Api.Autor.Models.AutorLibro", b =>
-                {
-                    b.Navigation("ListaGradoAcademico");
                 });
 #pragma warning restore 612, 618
         }
