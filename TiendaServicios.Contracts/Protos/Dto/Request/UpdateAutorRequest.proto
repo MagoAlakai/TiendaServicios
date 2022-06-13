@@ -3,7 +3,10 @@ syntax = "proto3";
 package Protos.Dto.Request;
 option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Request";
 
+import "Protos/Models/AutorModel.proto";
+
 message UpdateAutorRequest
 {
-	string AutorLibroGuid = 1;
+	int32 AutorLibroId = 1;
+	Protos.Models.AutorModel AutorModel = 2;
 }

@@ -13,10 +13,10 @@ public class AutorService : AutorServices.AutorServicesBase
 
     public override async Task<GetAutorResponse> GetAutor(GetAutorRequest request, ServerCallContext context)
     {
-        AutorLibro? autor = await _autorsContext.AutorLibro.FindAsync(request.AutorLibroGuid);
+        AutorLibro? autor = await _autorsContext.AutorLibro.FindAsync(request.AutorLibroId);
         if (autor is null)
         {
-            throw new RpcException(new Status(StatusCode.NotFound, $"Autor with ID={request.AutorLibroGuid} is not found"));
+            throw new RpcException(new Status(StatusCode.NotFound, $"Autor with ID={request.AutorLibroId} is not found"));
         }
 
         AutorModel autor_model = autor.MapToAutorModel();
@@ -39,9 +39,7 @@ public class AutorService : AutorServices.AutorServicesBase
     public override async Task<AutorModelListResponse> GetAllAutors(GetAllAutorsRequest request, ServerCallContext context)
     {
         List<AutorLibro>? autor_list = await _autorsContext.AutorLibro.ToListAsync();
-
         IEnumerable<AutorModel>? autor_model_list = autor_list.Select(x => x.MapToAutorModel());
-
 
         AutorModelListResponse get_all_autors_response = autor_model_list is null
             ? new AutorModelListResponse
@@ -86,18 +84,19 @@ public class AutorService : AutorServices.AutorServicesBase
     {
         GetAutorRequest add_autor_request = new()
         {
-            AutorLibroGuid = request.AutorLibroGuid
+            AutorLibroId = request.AutorLibroId
         };
         GetAutorResponse get_autor_response = await GetAutor(add_autor_request, context);
 
-        AutorLibro autor = get_autor_response.AutorModel.MapToUpdateProductModelFromRequest();
-
-        bool autor_exist = await _autorsContext.AutorLibro.AnyAsync(p => p.AutorLibroGuid.Equals(autor.AutorLibroGuid));
+        bool autor_exist = await _autorsContext.AutorLibro.AnyAsync(p => p.AutorLibroId.Equals(request.AutorLibroId));
         if (autor_exist is false)
         {
-            throw new RpcException(new Status(StatusCode.NotFound, $"Autor with ID={autor.AutorLibroGuid} is not found"));
+            throw new RpcException(new Status(StatusCode.NotFound, $"Autor with ID={request.AutorLibroId} is not found"));
         }
 
+        AutorLibro autor = request.AutorModel.MapToUpdateProductModelFromRequest();
+
+        _autorsContext.ChangeTracker.Clear();
         _autorsContext.Update(autor);
         await _autorsContext.SaveChangesAsync();
 
@@ -120,11 +119,11 @@ public class AutorService : AutorServices.AutorServicesBase
 
     public override async Task<DeleteAutorResponse> DeleteAutor(DeleteAutorRequest request, ServerCallContext context)
     {
-        AutorLibro? autor = await _autorsContext.AutorLibro.FindAsync(request.AutorLibroGuid);
+        AutorLibro? autor = await _autorsContext.AutorLibro.FindAsync(request.AutorLibroId);
 
         if (autor is null)
         {
-            throw new RpcException(new Status(StatusCode.NotFound, $"Autor with ID={request.AutorLibroGuid} is not found"));
+            throw new RpcException(new Status(StatusCode.NotFound, $"Autor with ID={request.AutorLibroId} is not found"));
         }
 
         _autorsContext.AutorLibro.Remove(autor);
