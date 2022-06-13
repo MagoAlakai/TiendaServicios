@@ -115,4 +115,17 @@ UpdateAutorResponse update_autor_response = await client.UpdateAutorAsync(update
 Console.WriteLine($"UpdateAutorAsync Response Success: {update_autor_response.Success}");
 Console.WriteLine($"UpdateAutorAsync Response Model: {update_autor_response.AutorModel}");
 
+// DeleteAutorAsync
+Console.WriteLine("DeleteAutorAsync started...");
+Thread.Sleep(1000);
+
+DeleteAutorRequest delete_autor_request = new()
+{
+    AutorLibroId = 1,
+};
+
+DeleteAutorResponse delete_autor_response = await client.DeleteAutorAsync(delete_autor_request);
+Console.WriteLine($"DeleteAutorAsync Response Success: {update_autor_response.Success}");
+
+
 Console.ReadKey();
