@@ -1,5 +1,4 @@
-﻿
-Console.WriteLine("Server starting...");
+﻿Console.WriteLine("Server starting...");
 Thread.Sleep(1000);
 
 HttpClientHandler http_client_handler = new()

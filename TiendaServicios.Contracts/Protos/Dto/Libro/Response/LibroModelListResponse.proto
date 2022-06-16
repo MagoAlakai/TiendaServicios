@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package Protos.Dto.Libro.Response;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Libro.Response";
+
+import "Protos/Models/LibroModel.proto";
+
+message LibroModelListResponse
+{
+	bool success = 1;
+	repeated Protos.Models.LibroModel LibroModelList = 2;
+}

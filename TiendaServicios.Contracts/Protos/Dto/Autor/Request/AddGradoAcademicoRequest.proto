@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package Protos.Dto.Request;
-option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Request";
+package Protos.Dto.Autor.Request;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Autor.Request";
 
 import "Protos/Models/GradoAcademicoModel.proto";
 

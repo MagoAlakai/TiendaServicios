@@ -15,6 +15,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Autor", "Autor", "{DFF4993B-EE60-43C5-9D50-3BC250E4D3E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libro", "Libro", "{1B14A228-F8DF-4A5E-8415-838373569C7D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TiendaServicios.Api.Libro", "TiendaServicios.Api.Libro\TiendaServicios.Api.Libro.csproj", "{EF1F6AB7-AC4A-487F-9545-5FFED1003F21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{A58DCC77-5DD1-484C-8719-491013D76079}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiendaLibreria.Client", "TiendaLibreria.Client\TiendaLibreria.Client.csproj", "{5D0016DF-BCC8-48C8-B980-E900C57E2B14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,9 +43,24 @@ Global
 		{C05BC6FE-F808-493A-89F9-E6F1033BFF29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C05BC6FE-F808-493A-89F9-E6F1033BFF29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C05BC6FE-F808-493A-89F9-E6F1033BFF29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF1F6AB7-AC4A-487F-9545-5FFED1003F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1F6AB7-AC4A-487F-9545-5FFED1003F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1F6AB7-AC4A-487F-9545-5FFED1003F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1F6AB7-AC4A-487F-9545-5FFED1003F21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D0016DF-BCC8-48C8-B980-E900C57E2B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D0016DF-BCC8-48C8-B980-E900C57E2B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D0016DF-BCC8-48C8-B980-E900C57E2B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D0016DF-BCC8-48C8-B980-E900C57E2B14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2195D353-288D-4CF8-A5C3-D7A407B6CF86} = {DFF4993B-EE60-43C5-9D50-3BC250E4D3E3}
+		{7A5512FA-5F50-4CAF-AB51-FAA704B0B87B} = {A58DCC77-5DD1-484C-8719-491013D76079}
+		{C05BC6FE-F808-493A-89F9-E6F1033BFF29} = {DFF4993B-EE60-43C5-9D50-3BC250E4D3E3}
+		{EF1F6AB7-AC4A-487F-9545-5FFED1003F21} = {1B14A228-F8DF-4A5E-8415-838373569C7D}
+		{5D0016DF-BCC8-48C8-B980-E900C57E2B14} = {1B14A228-F8DF-4A5E-8415-838373569C7D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1D9FC746-1CD3-4C00-8749-ED4B15532178}

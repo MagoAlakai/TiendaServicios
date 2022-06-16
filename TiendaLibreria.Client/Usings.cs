@@ -1,10 +1,9 @@
 ﻿global using Google.Protobuf.WellKnownTypes;
 global using Grpc.Net.Client;
+global using System.Net.Security;
 global using System.Security.Authentication;
 global using System.Security.Cryptography.X509Certificates;
-global using TiendaLibros.Client;
-global using TiendaServicios.Contracts.Protos.Dto.Autor.Request;
-global using TiendaServicios.Contracts.Protos.Dto.Autor.Response;
+global using TiendaLibreria.Client;
 global using TiendaServicios.Contracts.Protos.Dto.Libro.Request;
 global using TiendaServicios.Contracts.Protos.Dto.Libro.Response;
 global using TiendaServicios.Contracts.Protos.Models;

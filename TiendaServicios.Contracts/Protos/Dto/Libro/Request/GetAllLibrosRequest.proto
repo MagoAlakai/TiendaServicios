@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package Protos.Dto.Libro.Request;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Libro.Request";
+
+message GetAllLibrosRequest
+{
+
+}

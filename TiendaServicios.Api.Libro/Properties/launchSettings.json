@@ -1,0 +1,13 @@
+﻿{
+  "profiles": {
+    "TiendaServicios.Api.Libro": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "https://127.0.0.1:53445",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

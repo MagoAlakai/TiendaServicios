@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package Protos.Dto.Libro.Request;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Libro.Request";
+
+import "Protos/Models/LibroModel.proto";
+
+message UpdateLibroRequest
+{
+	int32 LibroId = 1;
+	Protos.Models.LibroModel LibroModel = 2;
+}

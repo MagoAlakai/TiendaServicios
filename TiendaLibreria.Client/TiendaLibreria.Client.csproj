@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="..\TiendaServicios.Api.Libro\Infrastructure\tienda-svc.crt" Link="Certificates\tienda-svc.crt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Grpc.Net.ClientFactory" Version="2.46.0" />
   </ItemGroup>
 
@@ -15,14 +21,8 @@
     <ProjectReference Include="..\TiendaServicios.Contracts\TiendaServicios.Contracts.csproj" />
   </ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Certificates\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="..\TiendaServicios.Api.Autor\Infrastructure\tienda-svc.crt" Link="Certificates\tienda-svc.crt">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	</ItemGroup>
+  <ItemGroup>
+    <Folder Include="Certificates\" />
+  </ItemGroup>
 
 </Project>

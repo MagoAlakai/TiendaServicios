@@ -3,11 +3,8 @@ syntax = "proto3";
 package Protos.Services;
 option csharp_namespace = "TiendaServicios.Contracts.Protos.Services";
 
-//import "Protos/Dto/Request/GetGradoAcademicoRequest.proto";
-//import "Protos/Dto/Response/GetGradoAcademicoResponse.proto";
-
-import "Protos/Dto/Request/AddGradoAcademicoRequest.proto";
-import "Protos/Dto/Response/AddGradoAcademicoResponse.proto";
+import "Protos/Dto/Autor/Request/AddGradoAcademicoRequest.proto";
+import "Protos/Dto/Autor/Response/AddGradoAcademicoResponse.proto";
 
 service GradoAcademicoServices 
 {
@@ -16,6 +13,6 @@ service GradoAcademicoServices
 	//returns (Protos.Dto.Response.GetGradoAcademicoResponse);
 
 	// AddGradoAcademico
-	rpc AddGradoAcademico (Protos.Dto.Request.AddGradoAcademicoRequest)
-	returns (Protos.Dto.Response.AddGradoAcademicoResponse);
+	rpc AddGradoAcademico (Protos.Dto.Autor.Request.AddGradoAcademicoRequest)
+	returns (Protos.Dto.Autor.Response.AddGradoAcademicoResponse);
 }

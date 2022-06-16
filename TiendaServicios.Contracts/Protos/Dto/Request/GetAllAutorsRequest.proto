@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package Protos.Dto.Request;
-option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Request";
-
-message GetAllAutorsRequest
-{
-
-}

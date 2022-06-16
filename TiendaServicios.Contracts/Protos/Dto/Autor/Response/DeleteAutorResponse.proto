@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package Protos.Dto.Autor.Response;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Autor.Response";
+
+message DeleteAutorResponse
+{
+	 bool success = 1;
+}
