@@ -8,5 +8,5 @@ global using TiendaServicios.Api.Carrito.Mapping;
 global using TiendaServicios.Api.Carrito.Models;
 global using TiendaServicios.Contracts.Protos.Dto.Carrito.Request;
 global using TiendaServicios.Contracts.Protos.Dto.Carrito.Response;
-global using TiendaServicios.Contracts.Protos.Models;
 global using TiendaServicios.Contracts.Protos.Services;
+global using TiendaServicios.Contracts.Protos.Models;

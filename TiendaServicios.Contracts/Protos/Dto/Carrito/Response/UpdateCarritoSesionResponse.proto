@@ -1,0 +1,12 @@
+﻿syntax = "proto3";
+
+package Protos.Dto.Carrito.Response;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Carrito.Response";
+
+import "Protos/Models/CarritoSesionModel.proto";
+
+message UpdateCarritoSesionResponse
+{
+	bool success = 1;
+	Protos.Models.CarritoSesionModel CarritoSesionModel = 2;
+}

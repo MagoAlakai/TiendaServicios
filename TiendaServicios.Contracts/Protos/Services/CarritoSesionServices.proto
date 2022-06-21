@@ -3,14 +3,34 @@ syntax = "proto3";
 package Protos.Services;
 option csharp_namespace = "TiendaServicios.Contracts.Protos.Services";
 
+import "Protos/Dto/Carrito/Request/GetCarritoSesionRequest.proto";
+import "Protos/Dto/Carrito/Response/GetCarritoSesionResponse.proto";
+
+import "Protos/Dto/Carrito/Request/GetAllCarritosSesionRequest.proto";
+import "Protos/Dto/Carrito/Response/GetAllCarritosSesionResponse.proto";
+
 import "Protos/Dto/Carrito/Request/AddCarritoSesionRequest.proto";
 import "Protos/Dto/Carrito/Response/AddCarritoSesionResponse.proto";
 
 import "Protos/Dto/Carrito/Request/AddCarritoSesionDetalleRequest.proto";
 import "Protos/Dto/Carrito/Response/AddCarritoSesionDetalleResponse.proto";
 
+import "Protos/Dto/Carrito/Request/UpdateCarritoSesionRequest.proto";
+import "Protos/Dto/Carrito/Response/UpdateCarritoSesionResponse.proto";
+
+import "Protos/Dto/Carrito/Request/DeleteCarritoSesionRequest.proto";
+import "Protos/Dto/Carrito/Response/DeleteCarritoSesionResponse.proto";
+
 service CarritoSesionServices 
 {
+	// GetCarritoSesion
+	rpc GetCarritoSesion (Protos.Dto.Carrito.Request.GetCarritoSesionRequest)
+	returns (Protos.Dto.Carrito.Response.GetCarritoSesionResponse);
+
+	// GetAllCarritosSesion
+	rpc GetAllCarritosSesion (Protos.Dto.Carrito.Request.GetAllCarritosSesionRequest)
+	returns (Protos.Dto.Carrito.Response.GetAllCarritosSesionResponse);
+
 	// AddCarritoSesion
 	rpc AddCarritoSesion (Protos.Dto.Carrito.Request.AddCarritoSesionRequest)
 	returns (Protos.Dto.Carrito.Response.AddCarritoSesionResponse);
@@ -18,4 +38,12 @@ service CarritoSesionServices
 	// AddCarritoSesionDetalle
 	rpc AddCarritoSesionDetalle (Protos.Dto.Carrito.Request.AddCarritoSesionDetalleRequest)
 	returns (Protos.Dto.Carrito.Response.AddCarritoSesionDetalleResponse);
+
+	// UpdateCarritoSesion
+	rpc UpdateCarritoSesion (Protos.Dto.Carrito.Request.UpdateCarritoSesionRequest)
+	returns (Protos.Dto.Carrito.Response.UpdateCarritoSesionResponse);
+
+	// DeleteCarritoSesion
+	rpc DeleteCarritoSesion (Protos.Dto.Carrito.Request.DeleteCarritoSesionRequest)
+	returns (Protos.Dto.Carrito.Response.DeleteCarritoSesionResponse);
 }

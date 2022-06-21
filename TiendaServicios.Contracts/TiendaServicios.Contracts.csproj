@@ -38,6 +38,10 @@
 		<Protobuf Include="Protos\Dto\Libro\Request\UpdateLibroRequest.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Carrito\Request\AddCarritoSesionRequest.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Carrito\Request\AddCarritoSesionDetalleRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Carrito\Request\GetCarritoSesionRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Carrito\Request\GetAllCarritosSesionRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Carrito\Request\UpdateCarritoSesionRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Carrito\Request\DeleteCarritoSesionRequest.proto" GrpcServices="None" />
 	</ItemGroup>
 
 	<ItemGroup Label="DTO.Responses">
@@ -54,6 +58,10 @@
 		<Protobuf Include="Protos\Dto\Libro\Response\UpdateLibroResponse.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Carrito\Response\AddCarritoSesionResponse.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Carrito\Response\AddCarritoSesionDetalleResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Carrito\Response\GetCarritoSesionResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Carrito\Response\GetAllCarritosSesionResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Carrito\Response\UpdateCarritoSesionResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\Carrito\Response\DeleteCarritoSesionResponse.proto" GrpcServices="None" />
 	</ItemGroup>
 
 	<ItemGroup Label="Models">
