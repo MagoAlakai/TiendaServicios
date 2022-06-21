@@ -1,9 +1,7 @@
-﻿using Google.Protobuf.WellKnownTypes;
-
-namespace TiendaServicios.Api.Autor.Mapping;
+﻿namespace TiendaServicios.Api.Autor.Mapping;
 public static class AddAutorStaticMappingFromRequest
 {
-    public static AutorLibro MapToAddProductModelFromRequest(this AutorModel autor_model)
+    public static AutorLibro MapToAddAutorModelFromRequest(this AutorModel autor_model)
     {
         TypeAdapterConfig<AutorModel, AutorLibro>.NewConfig().IgnoreNullValues(true)
             .Map(x => x.AutorLibroId, src => src.AutorLibroId)

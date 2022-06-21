@@ -1,5 +1,4 @@
 ﻿namespace TiendaServicios.Api.Autor.Mapping;
-
 public static class AutorModelStaticMappingServer
 {
     public static AutorModel MapToAutorModel(this AutorLibro autor_libro)

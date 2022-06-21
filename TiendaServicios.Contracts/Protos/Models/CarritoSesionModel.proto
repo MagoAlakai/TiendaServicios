@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package Protos.Models;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Models";
+
+import "google/protobuf/timestamp.proto";
+import "Protos/Models/CarritoSesionDetalleModel.proto";
+
+message CarritoSesionModel
+{
+    int32 CarritoSesionId = 1;
+    google.protobuf.Timestamp CarritoSesionDate  = 2;
+    repeated Protos.Models.CarritoSesionDetalleModel ListaDetalle = 3;
+}

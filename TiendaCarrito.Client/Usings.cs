@@ -1,0 +1,10 @@
+﻿global using System.Net.Security;
+global using System.Security.Cryptography.X509Certificates;
+global using Grpc.Net.Client;
+global using System.Security.Authentication;
+global using TiendaCarrito.Client;
+global using TiendaServicios.Contracts.Protos.Services;
+global using Google.Protobuf.WellKnownTypes;
+global using TiendaServicios.Contracts.Protos.Dto.Carrito.Request;
+global using TiendaServicios.Contracts.Protos.Dto.Carrito.Response;
+global using TiendaServicios.Contracts.Protos.Models;

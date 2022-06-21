@@ -1,0 +1,12 @@
+﻿global using Google.Protobuf.WellKnownTypes;
+global using Grpc.Core;
+global using Mapster;
+global using Microsoft.EntityFrameworkCore;
+global using TiendaServicios.Api.Carrito.Database;
+global using TiendaServicios.Api.Carrito.Logic;
+global using TiendaServicios.Api.Carrito.Mapping;
+global using TiendaServicios.Api.Carrito.Models;
+global using TiendaServicios.Contracts.Protos.Dto.Carrito.Request;
+global using TiendaServicios.Contracts.Protos.Dto.Carrito.Response;
+global using TiendaServicios.Contracts.Protos.Models;
+global using TiendaServicios.Contracts.Protos.Services;

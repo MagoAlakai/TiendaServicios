@@ -1,0 +1,14 @@
+﻿{
+  "profiles": {
+    "TiendaServicios.Api.Carrito": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "https://127.0.0.1:53447",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
+

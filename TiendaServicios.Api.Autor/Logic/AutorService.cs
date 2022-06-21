@@ -39,7 +39,7 @@ public class AutorService : AutorServices.AutorServicesBase
     public override async Task<AutorModelListResponse> GetAllAutors(GetAllAutorsRequest request, ServerCallContext context)
     {
         List<AutorLibro>? autor_list = await _autorsContext.AutorLibro.ToListAsync();
-        IEnumerable<AutorModel>? autor_model_list = autor_list.Select(x => x.MapToAutorModel());
+        IEnumerable<AutorModel>? autor_model_list = (IEnumerable<AutorModel>?)autor_list.Select(x => x.MapToAutorModel());
 
         AutorModelListResponse get_all_autors_response = autor_model_list is null
             ? new AutorModelListResponse
@@ -58,7 +58,7 @@ public class AutorService : AutorServices.AutorServicesBase
 
     public override async Task<AddAutorResponse> AddAutor(AddAutorRequest request, ServerCallContext context)
     {
-        AutorLibro autor = request.AutorModel.MapToAddProductModelFromRequest();
+        AutorLibro autor = request.AutorModel.MapToAddAutorModelFromRequest();
 
         _autorsContext.Add(autor);
         await _autorsContext.SaveChangesAsync();
@@ -94,7 +94,7 @@ public class AutorService : AutorServices.AutorServicesBase
             throw new RpcException(new Status(StatusCode.NotFound, $"Autor with ID={request.AutorLibroId} is not found"));
         }
 
-        AutorLibro autor = request.AutorModel.MapToUpdateProductModelFromRequest();
+        AutorLibro autor = request.AutorModel.MapToUpdateAutorModelFromRequest();
 
         _autorsContext.ChangeTracker.Clear();
         _autorsContext.Update(autor);

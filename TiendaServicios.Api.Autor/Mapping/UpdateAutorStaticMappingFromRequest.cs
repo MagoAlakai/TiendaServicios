@@ -2,7 +2,7 @@
 {
     public static class UpdateAutorStaticMappingFromRequest
     {
-        public static AutorLibro MapToUpdateProductModelFromRequest(this AutorModel autor_model)
+        public static AutorLibro MapToUpdateAutorModelFromRequest(this AutorModel autor_model)
         {
             TypeAdapterConfig<AutorModel, AutorLibro>.NewConfig().IgnoreNullValues(true);
             AutorLibro autor_libro = TypeAdapter.Adapt<AutorModel, AutorLibro>(autor_model);

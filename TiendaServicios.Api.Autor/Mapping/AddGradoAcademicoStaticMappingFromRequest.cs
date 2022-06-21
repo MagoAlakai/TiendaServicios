@@ -1,6 +1,4 @@
-﻿using Google.Protobuf.WellKnownTypes;
-
-namespace TiendaServicios.Api.Autor.Mapping;
+﻿namespace TiendaServicios.Api.Autor.Mapping;
 public static class AddGradoAcademicoStaticMappingFromRequest
 {
     public static GradoAcademico MapToAddGradoAcademicoModelFromRequest(this GradoAcademicoModel grado_academico_model)

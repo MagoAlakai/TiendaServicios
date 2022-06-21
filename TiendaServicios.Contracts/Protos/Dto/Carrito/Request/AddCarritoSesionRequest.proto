@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package Protos.Dto.Carrito.Request;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Carrito.Request";
+
+import "Protos/Models/CarritoSesionModel.proto";
+
+message AddCarritoSesionRequest
+{
+	Protos.Models.CarritoSesionModel CarritoSesionModel = 1;
+}

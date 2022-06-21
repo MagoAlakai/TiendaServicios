@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package Protos.Services;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Services";
+
+import "Protos/Dto/Carrito/Request/AddCarritoSesionRequest.proto";
+import "Protos/Dto/Carrito/Response/AddCarritoSesionResponse.proto";
+
+import "Protos/Dto/Carrito/Request/AddCarritoSesionDetalleRequest.proto";
+import "Protos/Dto/Carrito/Response/AddCarritoSesionDetalleResponse.proto";
+
+service CarritoSesionServices 
+{
+	// AddCarritoSesion
+	rpc AddCarritoSesion (Protos.Dto.Carrito.Request.AddCarritoSesionRequest)
+	returns (Protos.Dto.Carrito.Response.AddCarritoSesionResponse);
+
+	// AddCarritoSesionDetalle
+	rpc AddCarritoSesionDetalle (Protos.Dto.Carrito.Request.AddCarritoSesionDetalleRequest)
+	returns (Protos.Dto.Carrito.Response.AddCarritoSesionDetalleResponse);
+}
