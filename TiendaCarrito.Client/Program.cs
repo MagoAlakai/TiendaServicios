@@ -9,7 +9,7 @@ HttpClientHandler http_client_handler = new()
 http_client_handler.UseUnsignedServerCertificateValidation();
 
 HttpClient http_client = new(http_client_handler);
-using GrpcChannel channel = GrpcChannel.ForAddress("https://carrito-svc:53447", new()
+using GrpcChannel channel = GrpcChannel.ForAddress("https://tiendaservicios.api.libro:53447", new()
 {
     HttpClient = http_client
 });
@@ -22,33 +22,33 @@ Thread.Sleep(2000);
 
 CarritoSesionModel add_carrito_sesion_model = new()
 {
-    CarritoSesionId = 3,
+    CarritoSesionId = 1,
     CarritoSesionDate = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
 };
 
 // AddCarritoSesionDetalleASync
 CarritoSesionDetalleModel carrito_sesion_detalle_model1 = new()
 {
-    CarritoSesionDetalleId = 7,
+    CarritoSesionDetalleId = 1,
     ProductoSeleccionado = Guid.NewGuid().ToString(),
     CarritoSesionDetalleDate = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
-    CarritoSesionId = 3,
+    CarritoSesionId = 1,
 };
 
 CarritoSesionDetalleModel carrito_sesion_detalle_model2 = new()
 {
-    CarritoSesionDetalleId = 8,
+    CarritoSesionDetalleId = 2,
     ProductoSeleccionado = Guid.NewGuid().ToString(),
     CarritoSesionDetalleDate = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
-    CarritoSesionId = 3,
+    CarritoSesionId = 1,
 };
 
 CarritoSesionDetalleModel carrito_sesion_detalle_model3 = new()
 {
-    CarritoSesionDetalleId = 9,
+    CarritoSesionDetalleId = 3,
     ProductoSeleccionado = Guid.NewGuid().ToString(),
     CarritoSesionDetalleDate = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
-    CarritoSesionId = 3,
+    CarritoSesionId = 1,
 };
 
 Google.Protobuf.Collections.RepeatedField<CarritoSesionDetalleModel> ListaDetalle = new();
@@ -105,7 +105,7 @@ Thread.Sleep(2000);
 
 CarritoSesionModel update_carrito_model = new()
 {
-    CarritoSesionId = 3,
+    CarritoSesionId = 1,
     CarritoSesionDate = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
 };
 
@@ -113,7 +113,7 @@ update_carrito_model.ListaDetalle.Add(ListaDetalle);
 
 UpdateCarritoSesionRequest update_carrito_request = new()
 {
-    CarritoSesionId = 3,
+    CarritoSesionId = 1,
     CarritoSesionModel = update_carrito_model
 };
 
@@ -122,15 +122,15 @@ Console.WriteLine($"UpdateCarritoSesionAsync Response Success: {update_carrito_s
 Console.WriteLine($"UpdateCarritoSesionAsync Response Model: {update_carrito_sesion_response.CarritoSesionModel}");
 
 // DeleteCarritoSesionAsync
-Console.WriteLine("DeleteCarritoSesionAsync started...");
-Thread.Sleep(2000);
+//Console.WriteLine("DeleteCarritoSesionAsync started...");
+//Thread.Sleep(2000);
 
-DeleteCarritoSesionRequest delete_carrito_request = new()
-{
-    CarritoSesionId = 3,
-};
+//DeleteCarritoSesionRequest delete_carrito_request = new()
+//{
+//    CarritoSesionId = 3,
+//};
 
-DeleteCarritoSesionResponse delete_carrito_sesion_response = await client.DeleteCarritoSesionAsync(delete_carrito_request);
-Console.WriteLine($"DeleteCarritoSesionAsync Response Success: {delete_carrito_sesion_response.Success}");
+//DeleteCarritoSesionResponse delete_carrito_sesion_response = await client.DeleteCarritoSesionAsync(delete_carrito_request);
+//Console.WriteLine($"DeleteCarritoSesionAsync Response Success: {delete_carrito_sesion_response.Success}");
 
 Console.ReadKey();

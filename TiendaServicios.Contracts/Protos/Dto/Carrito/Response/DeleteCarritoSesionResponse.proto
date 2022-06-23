@@ -3,8 +3,6 @@
 package Protos.Dto.Carrito.Response;
 option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.Carrito.Response";
 
-import "Protos/Models/CarritoSesionModel.proto";
-
 message DeleteCarritoSesionResponse
 {
 	bool success = 1;

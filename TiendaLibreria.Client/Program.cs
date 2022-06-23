@@ -9,7 +9,7 @@ HttpClientHandler http_client_handler = new()
 http_client_handler.UseUnsignedServerCertificateValidation();
 
 HttpClient http_client = new(http_client_handler);
-using GrpcChannel channel = GrpcChannel.ForAddress("https://libros-svc:53445", new()
+using GrpcChannel channel = GrpcChannel.ForAddress("https://tiendaservicios.api.libro:53445", new()
 {
     HttpClient = http_client
 });
@@ -41,7 +41,7 @@ Thread.Sleep(1000);
 
 GetLibroRequest get_libro_request = new()
 {
-    LibroId = 2,
+    LibroId = 4,
 };
 
 GetLibroResponse get_libro_response = await client.GetLibroAsync(get_libro_request);
@@ -87,15 +87,15 @@ Console.WriteLine($"UpdateLibroAsync Response Success: {update_libro_response.Su
 Console.WriteLine($"UpdateLibroAsync Response Model: {update_libro_response.LibroModel}");
 
 // DeleteLibroAsync
-Console.WriteLine("DeleteLibroAsync started...");
-Thread.Sleep(1000);
+//Console.WriteLine("DeleteLibroAsync started...");
+//Thread.Sleep(1000);
 
-DeleteLibroRequest delete_libro_request = new()
-{
-    LibroId = 4,
-};
+//DeleteLibroRequest delete_libro_request = new()
+//{
+//    LibroId = 4,
+//};
 
-DeleteLibroResponse delete_libro_response = await client.DeleteLibroAsync(delete_libro_request);
-Console.WriteLine($"DeleteLibroAsync Response Success: {update_libro_response.Success}");
+//DeleteLibroResponse delete_libro_response = await client.DeleteLibroAsync(delete_libro_request);
+//Console.WriteLine($"DeleteLibroAsync Response Success: {update_libro_response.Success}");
 
 Console.ReadLine();

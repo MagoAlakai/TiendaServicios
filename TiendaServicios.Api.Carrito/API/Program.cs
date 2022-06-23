@@ -6,7 +6,9 @@ builder.Services.AddDbContext<ContextoCarrito>(options
 builder.Services.AddGrpc(opt => opt.EnableDetailedErrors = true);
 
 WebApplication app = builder.Build();
-
+using IServiceScope? service_scope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope();
+using ContextoCarrito? ctx = service_scope?.ServiceProvider.GetRequiredService<ContextoCarrito>();
+ctx?.Database.Migrate();
 app.UseDeveloperExceptionPage();
 app.UseHttpsRedirection();
 app.UseRouting();

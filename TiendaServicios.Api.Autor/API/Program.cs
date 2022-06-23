@@ -6,6 +6,10 @@ builder.Services.AddDbContext<ContextoAutor>(options
 builder.Services.AddGrpc(opt => opt.EnableDetailedErrors = true);
 
 WebApplication app = builder.Build();
+using IServiceScope? service_scope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope();
+using ContextoAutor? ctx = service_scope?.ServiceProvider.GetRequiredService<ContextoAutor>();
+ctx?.Database.Migrate();
+
 app.UseDeveloperExceptionPage();
 app.UseHttpsRedirection();
 app.UseRouting();

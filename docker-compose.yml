@@ -1,0 +1,80 @@
+version: '3.4'
+
+services:
+
+  tiendaservicios.api.autor:
+    image: ${DOCKER_REGISTRY-}tiendaserviciosapiautor
+    container_name: tiendaservicios.api.autor
+    build:
+      context: .
+      dockerfile: TiendaServicios.Api.Autor/Dockerfile
+    expose:
+      - 53443
+    ports:
+      - 53443:53443
+
+  tiendaservicios.db.autor:
+    image: postgres
+    container_name: tiendaservicios.db.autor
+    restart: always
+    expose:
+      - 5433
+    ports:
+      - 5433:5433
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DATABASE: tiendaautor
+      PGPORT: 5433
+
+
+  tiendaservicios.api.libro:
+    image: ${DOCKER_REGISTRY-}tiendaserviciosapilibro
+    container_name: tiendaservicios.api.libro
+    build:
+      context: .
+      dockerfile: TiendaServicios.Api.Libro/Dockerfile
+    expose:
+      - 53445
+    ports:
+      - 53445:53445
+
+  tiendaservicios.db.libro:
+    image: postgres
+    container_name: tiendaservicios.db.libro
+    restart: always
+    expose:
+      - 5434
+    ports:
+      - 5434:5434
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DATABASE: tiendalibros
+      PGPORT: 5434
+
+
+  tiendaservicios.api.carrito:
+    image: ${DOCKER_REGISTRY-}tiendaserviciosapicarrito
+    container_name: tiendaservicios.api.carrito
+    build:
+      context: .
+      dockerfile: TiendaServicios.Api.Carrito/Dockerfile
+    expose:
+      - 53447
+    ports:
+      - 53447:53447
+
+  tiendaservicios.db.carrito:
+    image: postgres
+    container_name: tiendaservicios.db.carrito
+    restart: always
+    expose:
+      - 5435
+    ports:
+      - 5435:5435
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DATABASE: carritocompra
+      PGPORT: 5435

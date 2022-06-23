@@ -9,7 +9,7 @@ HttpClientHandler http_client_handler = new()
 http_client_handler.UseUnsignedServerCertificateValidation();
 
 HttpClient http_client = new(http_client_handler);
-using GrpcChannel channel = GrpcChannel.ForAddress("https://tienda-svc:53443", new()
+using GrpcChannel channel = GrpcChannel.ForAddress("https://tiendaservicios.api.autor:53443", new()
 {
     HttpClient = http_client
 });
@@ -18,35 +18,35 @@ AutorServices.AutorServicesClient client = new(channel);
 GradoAcademicoServices.GradoAcademicoServicesClient grado_client = new(channel);
 
 //// AddAutorAsync - AddGradoAcademicoSync
-//Console.WriteLine("AddAutorAsync started...");
-//Thread.Sleep(2000);
+Console.WriteLine("AddAutorAsync started...");
+Thread.Sleep(2000);
 
-//// AddGradoAcademicoSync
-//GradoAcademicoModel grado_model = new()
-//{
-//    GradoAcademicoId = 5,
-//    Nombre = "Escoles Píes",
-//    CentroAcademico = "Rosselló 200",
-//    FechaGrado = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
-//    AutorLibroId = 5,
-//    GradoAcademicoGuid = Guid.NewGuid().ToString(),
-//};
+// AddGradoAcademicoSync
+GradoAcademicoModel grado_model = new()
+{
+    GradoAcademicoId = 2,
+    Nombre = "Escoles Píes",
+    CentroAcademico = "Rosselló 200",
+    FechaGrado = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
+    AutorLibroId = 5,
+    GradoAcademicoGuid = Guid.NewGuid().ToString(),
+};
 
-//AddGradoAcademicoRequest add_grado_request = new()
-//{
-//    GradoAcademicoModel = grado_model,
-//};
+AddGradoAcademicoRequest add_grado_request = new()
+{
+    GradoAcademicoModel = grado_model,
+};
 
-//AddGradoAcademicoResponse add_grado_response = await grado_client.AddGradoAcademicoAsync(add_grado_request);
-//Console.WriteLine($"AddGradoAcademicoAsync Response Success: {add_grado_response.Success}");
-//Console.WriteLine($"AddGradoAcademicoAsync Response Model: {add_grado_response.GradoAcademicoModel}");
+AddGradoAcademicoResponse add_grado_response = await grado_client.AddGradoAcademicoAsync(add_grado_request);
+Console.WriteLine($"AddGradoAcademicoAsync Response Success: {add_grado_response.Success}");
+Console.WriteLine($"AddGradoAcademicoAsync Response Model: {add_grado_response.GradoAcademicoModel}");
 
 // AddAutorAsync
 AutorModel add_autor_model = new()
 {
-    AutorLibroId = 1,
+    AutorLibroId = 2,
     Nombre = "Alba",
-    Apellido = "Casadellà",
+    Apellido = "Casadella",
     GradoAcademicoGuid = "2f95fe65-4d07-41a4-94ee-8ca3c022f644",
     FechaNacimiento = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
     AutorLibroGuid = "2f9af589-5ebf-405c-8524-50c0b2e67f08",
@@ -67,7 +67,7 @@ Thread.Sleep(1000);
 
 GetAutorRequest get_autor_request = new()
 {
-    AutorLibroId = 5,
+    AutorLibroId = 1,
 };
 
 GetAutorResponse get_autor_response = await client.GetAutorAsync(get_autor_request);
@@ -96,7 +96,7 @@ Thread.Sleep(1000);
 
 AutorModel update_autor_model = new()
 {
-    AutorLibroId = 5,
+    AutorLibroId = 1,
     Nombre = "Idurre",
     Apellido = "Arrazola",
     GradoAcademicoGuid = "ffcaf377-c7e9-4f10-9cec-af7abb6a15fc",
@@ -106,7 +106,7 @@ AutorModel update_autor_model = new()
 
 UpdateAutorRequest update_autor_request = new()
 {
-    AutorLibroId = 5,
+    AutorLibroId = 1,
     AutorModel = update_autor_model
 };
 
@@ -115,16 +115,16 @@ Console.WriteLine($"UpdateAutorAsync Response Success: {update_autor_response.Su
 Console.WriteLine($"UpdateAutorAsync Response Model: {update_autor_response.AutorModel}");
 
 // DeleteAutorAsync
-Console.WriteLine("DeleteAutorAsync started...");
-Thread.Sleep(1000);
+//Console.WriteLine("DeleteAutorAsync started...");
+//Thread.Sleep(1000);
 
-DeleteAutorRequest delete_autor_request = new()
-{
-    AutorLibroId = 1,
-};
+//DeleteAutorRequest delete_autor_request = new()
+//{
+//    AutorLibroId = 1,
+//};
 
-DeleteAutorResponse delete_autor_response = await client.DeleteAutorAsync(delete_autor_request);
-Console.WriteLine($"DeleteAutorAsync Response Success: {update_autor_response.Success}");
+//DeleteAutorResponse delete_autor_response = await client.DeleteAutorAsync(delete_autor_request);
+//Console.WriteLine($"DeleteAutorAsync Response Success: {update_autor_response.Success}");
 
 
 Console.ReadKey();

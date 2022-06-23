@@ -7,7 +7,9 @@ builder.Services.AddDbContext<ContextoLibreria>(options
 builder.Services.AddGrpc(opt => opt.EnableDetailedErrors = true);
 
 WebApplication app = builder.Build();
-
+using IServiceScope? service_scope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope();
+using ContextoLibreria? ctx = service_scope?.ServiceProvider.GetRequiredService<ContextoLibreria>();
+ctx?.Database.Migrate();
 // Configure the HTTP request pipeline.
 app.UseDeveloperExceptionPage();
 app.UseHttpsRedirection();
