@@ -46,7 +46,7 @@ AutorModel add_autor_model = new()
 {
     AutorLibroId = 2,
     Nombre = "Alba",
-    Apellido = "Casadella",
+    Apellido = "Pedrero",
     GradoAcademicoGuid = "2f95fe65-4d07-41a4-94ee-8ca3c022f644",
     FechaNacimiento = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
     AutorLibroGuid = "2f9af589-5ebf-405c-8524-50c0b2e67f08",
@@ -96,9 +96,9 @@ Thread.Sleep(1000);
 
 AutorModel update_autor_model = new()
 {
-    AutorLibroId = 1,
-    Nombre = "Idurre",
-    Apellido = "Arrazola",
+    AutorLibroId = 2,
+    Nombre = "Alba",
+    Apellido = "Casadella",
     GradoAcademicoGuid = "ffcaf377-c7e9-4f10-9cec-af7abb6a15fc",
     FechaNacimiento = Timestamp.FromDateTime(DateTime.Now.ToUniversalTime()),
     AutorLibroGuid = "60e6a601-e65a-41a1-a1e7-9085711a9302",
@@ -106,7 +106,7 @@ AutorModel update_autor_model = new()
 
 UpdateAutorRequest update_autor_request = new()
 {
-    AutorLibroId = 1,
+    AutorLibroId = 2,
     AutorModel = update_autor_model
 };
 
