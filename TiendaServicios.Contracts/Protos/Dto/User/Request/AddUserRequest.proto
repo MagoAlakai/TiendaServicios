@@ -1,0 +1,11 @@
+﻿syntax = "proto3";
+
+package Protos.Dto.User.Request;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.User.Request";
+
+import "Protos/Models/UserModel.proto";
+
+message AddUserRequest
+{
+	Protos.Models.UserModel UserModel = 1;
+}

@@ -7,9 +7,11 @@
         "tiendaservicios.api.autor": "StartDebugging",
         "tiendaservicios.api.carrito": "StartDebugging",
         "tiendaservicios.api.libro": "StartDebugging",
+        "tiendaservicios.api.identity": "StartDebugging",
         "tiendaservicios.db.autor": "StartWithoutDebugging",
         "tiendaservicios.db.carrito": "StartWithoutDebugging",
-        "tiendaservicios.db.libro": "StartWithoutDebugging"
+        "tiendaservicios.db.libro": "StartWithoutDebugging",
+        "tiendaservicios.db.identity": "StartWithoutDebugging"
       }
     }
   }

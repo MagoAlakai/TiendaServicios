@@ -26,6 +26,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DATABASE: tiendaautor
       PGPORT: 5433
+    volumes:
+      - author-db-data-vol:/var/lib/postgresql/data
 
 
   tiendaservicios.api.libro:
@@ -52,6 +54,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DATABASE: tiendalibros
       PGPORT: 5434
+    volumes:
+      - libro-db-data-vol:/var/lib/postgresql/data
 
 
   tiendaservicios.api.carrito:
@@ -78,3 +82,42 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DATABASE: carritocompra
       PGPORT: 5435
+    volumes:
+      - carrito-db-data-vol:/var/lib/postgresql/data
+
+  tiendaservicios.api.identity:
+    image: ${DOCKER_REGISTRY-}tiendaserviciosidentity
+    container_name: tiendaservicios.api.identity
+    build:
+      context: .
+      dockerfile: TiendaServicios.Api.Identity/Dockerfile
+    expose:
+      - 53449
+    ports:
+      - 53449:53449
+
+  tiendaservicios.db.identity:
+    image: postgres
+    container_name: tiendaservicios.db.identity
+    restart: always
+    expose:
+      - 5436
+    ports:
+      - 5436:5436
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DATABASE: tiendaidentity
+      PGPORT: 5436
+    volumes:
+      - identity-db-data-vol:/var/lib/postgresql/data
+
+volumes:
+  author-db-data-vol:
+    name: author-db-data-vol
+  libro-db-data-vol:
+    name: libro-db-data-vol
+  carrito-db-data-vol:
+    name: carrito-db-data-vol
+  identity-db-data-vol:
+    name: identity-db-data-vol

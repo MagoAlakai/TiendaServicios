@@ -1,0 +1,12 @@
+﻿syntax = "proto3";
+
+package Protos.Models;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Models";
+
+message UserModel
+{
+    int32 UserId = 1;
+    string Email = 2;
+    string Password = 3;
+    string UserGuid = 4;
+}

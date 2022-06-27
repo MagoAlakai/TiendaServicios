@@ -1,0 +1,12 @@
+﻿syntax = "proto3";
+
+package Protos.Dto.User.Response;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Dto.User.Response";
+
+import "Protos/Models/UserModel.proto";
+
+message AddUserResponse
+{
+	bool success = 1;
+	Protos.Models.UserModel UserModel = 2;
+}

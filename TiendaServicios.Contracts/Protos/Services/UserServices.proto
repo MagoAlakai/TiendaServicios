@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+
+package Protos.Services;
+option csharp_namespace = "TiendaServicios.Contracts.Protos.Services";
+
+import "Protos/Dto/User/Request/AddUserRequest.proto";
+import "Protos/Dto/User/Response/AddUserResponse.proto";
+
+service UserServices 
+{
+	// AddUser
+	rpc AddUser (Protos.Dto.User.Request.AddUserRequest)
+	returns (Protos.Dto.User.Response.AddUserResponse);
+}
