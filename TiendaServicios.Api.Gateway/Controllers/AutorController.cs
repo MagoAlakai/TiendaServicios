@@ -20,7 +20,6 @@ public class AutorController : ControllerBase
         });
 
         AutorServices.AutorServicesClient client = new(channel);
-        //GradoAcademicoServices.GradoAcademicoServicesClient grado_client = new(channel);
 
         return client;
     }
