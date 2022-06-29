@@ -112,6 +112,22 @@ services:
     volumes:
       - identity-db-data-vol:/var/lib/postgresql/data
 
+  tiendaservicios.api.gateway:
+    image: ${DOCKER_REGISTRY-}tiendaserviciosapigateway
+    container_name: tiendaservicios.api.gateway
+    build:
+      context: .
+      dockerfile: TiendaServicios.Api.Gateway/Dockerfile
+    expose:
+      - 53451
+    ports:
+      - 53451:53451
+    #environment:
+    #  - ASPNETCORE_ENVIRONMENT=Development
+    #  - ASPNETCORE_URL=https://+:53451
+    #  - ASPNETCORE_Kestrel__Certificates__Default__Password=tienda-svc
+    #  - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/tienda-svc.pfx
+
 volumes:
   author-db-data-vol:
     name: author-db-data-vol
