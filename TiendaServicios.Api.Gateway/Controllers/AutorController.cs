@@ -2,6 +2,7 @@
 
 [ApiController]
 [Route("api/autores")]
+[Authorize]
 public class AutorController : ControllerBase
 {
     private AutorServices.AutorServicesClient CreateClient()
@@ -25,6 +26,7 @@ public class AutorController : ControllerBase
     }
     // GET: /get/{AutorId}
     [HttpGet("get/{AutorId}", Name ="GetAutor")]
+    [AllowAnonymous]
     //[ValidateAntiForgeryToken]
     public async Task<IActionResult> Index(int AutorId)
     {
@@ -41,6 +43,7 @@ public class AutorController : ControllerBase
 
     // GET: api/autores/get/Autores
     [HttpGet("get/Autores", Name ="GetAllAutors")]
+    [AllowAnonymous]
     //[ValidateAntiForgeryToken]
     public async Task<IActionResult> IndexAll()
     {
@@ -102,23 +105,6 @@ public class AutorController : ControllerBase
         DeleteAutorResponse delete_autor_response = await client.DeleteAutorAsync(delete_autor_request);
         return CreatedAtRoute("DeleteAutor", delete_autor_response);
     }
-
-    //private string BuildToken(User user)
-    //{
-    //    var claims = new[] {
-    //        new Claim(ClaimTypes.Email, user.Email ?? string.Empty)
-    //    };
-    //    // privte signing key which is just a string
-    //    var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
-    //    // how are you going to sign the jwt
-    //    var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256Signature);
-    //    var token = new JwtSecurityToken(
-    //      _config["Jwt:Issuer"],
-    //      _config["Jwt:Issuer"],
-    //      claims,
-    //      expires: DateTime.Now.AddMinutes(30),
-    //      signingCredentials: creds
-    //    );
-    //    return new JwtSecurityTokenHandler().WriteToken(token);
-    //}
 }
+
+

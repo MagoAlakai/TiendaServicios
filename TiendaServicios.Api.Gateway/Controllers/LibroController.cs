@@ -2,6 +2,7 @@
 
 [ApiController]
 [Route("api/libros")]
+[Authorize]
 public class LibroController : Controller
 {
     private LibrosServices.LibrosServicesClient CreateClient()
@@ -25,6 +26,7 @@ public class LibroController : Controller
     }
     // GET: /get/{LibroId}
     [HttpGet("get/{LibroId}", Name = "GetLibro")]
+    [AllowAnonymous]
     //[ValidateAntiForgeryToken]
     public async Task<IActionResult> Index(int LibroId)
     {
@@ -39,8 +41,9 @@ public class LibroController : Controller
         return CreatedAtRoute("GetLibro", get_libro_response);
     }
 
-    // GET: api/libroes/get/Libroes
+    // GET: api/libros/get/Libros
     [HttpGet("get/libros", Name = "GetAllLibros")]
+    [AllowAnonymous]
     //[ValidateAntiForgeryToken]
     public async Task<IActionResult> IndexAll()
     {
@@ -54,7 +57,7 @@ public class LibroController : Controller
         return CreatedAtRoute("GetAllLibros", all_libros_response);
     }
 
-    // POST: api/libroes/create
+    // POST: api/libros/create
     [HttpPost("create", Name = "CreateLibro")]
     //[ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(LibroModel LibroModel)

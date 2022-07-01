@@ -6,9 +6,23 @@ option csharp_namespace = "TiendaServicios.Contracts.Protos.Services";
 import "Protos/Dto/User/Request/AddUserRequest.proto";
 import "Protos/Dto/User/Response/AddUserResponse.proto";
 
+import "Protos/Dto/User/Request/GetUserRequest.proto";
+import "Protos/Dto/User/Response/GetUserResponse.proto";
+
+import "Protos/Dto/User/Request/GetUserByEmailRequest.proto";
+import "Protos/Dto/User/Response/GetUserByEmailResponse.proto";
+
 service UserServices 
 {
 	// AddUser
 	rpc AddUser (Protos.Dto.User.Request.AddUserRequest)
 	returns (Protos.Dto.User.Response.AddUserResponse);
+
+	// GetUser
+	rpc GetUser (Protos.Dto.User.Request.GetUserRequest)
+	returns (Protos.Dto.User.Response.GetUserResponse);
+
+	// GetUserByEmail
+	rpc GetUserByEmail (Protos.Dto.User.Request.GetUserByEmailRequest)
+	returns (Protos.Dto.User.Response.GetUserByEmailResponse);
 }

@@ -44,6 +44,8 @@
 		<Protobuf Include="Protos\Dto\Carrito\Request\UpdateCarritoSesionRequest.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Carrito\Request\DeleteCarritoSesionRequest.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\User\Request\AddUserRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\User\Request\GetUserRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\User\Request\GetUserByEmailRequest.proto" GrpcServices="None" />
 	</ItemGroup>
 
 	<ItemGroup Label="DTO.Responses">
@@ -65,6 +67,8 @@
 		<Protobuf Include="Protos\Dto\Carrito\Response\UpdateCarritoSesionResponse.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\Carrito\Response\DeleteCarritoSesionResponse.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\User\Response\AddUserResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\User\Response\GetUserResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\User\Response\GetUserByEmailResponse.proto" GrpcServices="None" />
 	</ItemGroup>
 
 	<ItemGroup Label="Models">

@@ -5,6 +5,7 @@ namespace TiendaServicios.Api.Gateway.Controllers;
 
 [ApiController]
 [Route("api/carrito")]
+[Authorize]
 public class CarritoController : Controller
 {
     private CarritoSesionServices.CarritoSesionServicesClient CreateClient()
@@ -28,6 +29,7 @@ public class CarritoController : Controller
     }
     // GET: /get/{CarritoSesionId}
     [HttpGet("get/{CarritoSesionId}", Name = "GetCarritoSesion")]
+    [AllowAnonymous]
     //[ValidateAntiForgeryToken]
     public async Task<IActionResult> Index(int CarritoSesionId)
     {
@@ -42,8 +44,9 @@ public class CarritoController : Controller
         return CreatedAtRoute("GetCarritoSesion", get_carrito_sesion_response);
     }
 
-    // GET: api/carrito/get/CarritoSesiones
+    // GET: api/carrito/get/caritos
     [HttpGet("get/carritos", Name = "GetAllCarritoSesions")]
+    [AllowAnonymous]
     //[ValidateAntiForgeryToken]
     public async Task<IActionResult> IndexAll()
     {

@@ -1,4 +1,10 @@
-﻿global using Microsoft.EntityFrameworkCore;
+﻿global using Grpc.Core;
+global using Microsoft.EntityFrameworkCore;
 global using TiendaServicios.Api.Identity.Database;
 global using TiendaServicios.Api.Identity.Logic;
+global using TiendaServicios.Api.Identity.Mapping;
 global using TiendaServicios.Api.Identity.Models;
+global using TiendaServicios.Contracts.Protos.Dto.User.Request;
+global using TiendaServicios.Contracts.Protos.Dto.User.Response;
+global using TiendaServicios.Contracts.Protos.Models;
+global using TiendaServicios.Contracts.Protos.Services;
