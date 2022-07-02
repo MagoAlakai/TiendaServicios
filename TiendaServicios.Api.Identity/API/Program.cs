@@ -4,6 +4,7 @@ builder.Services.AddDbContext<ContextoIdentity>(options
     => options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(ContextoIdentity))));
 
 builder.Services.AddGrpc(opt => opt.EnableDetailedErrors = true);
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
 
 WebApplication app = builder.Build();
 using IServiceScope? service_scope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope();
@@ -13,6 +14,9 @@ ctx?.Database.Migrate();
 app.UseDeveloperExceptionPage();
 app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseAuthentication();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapGrpcService<UserService>();

@@ -46,6 +46,7 @@
 		<Protobuf Include="Protos\Dto\User\Request\AddUserRequest.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\User\Request\GetUserRequest.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\User\Request\GetUserByEmailRequest.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\User\Request\CreateTokenRequest.proto" GrpcServices="None" />
 	</ItemGroup>
 
 	<ItemGroup Label="DTO.Responses">
@@ -69,6 +70,7 @@
 		<Protobuf Include="Protos\Dto\User\Response\AddUserResponse.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\User\Response\GetUserResponse.proto" GrpcServices="None" />
 		<Protobuf Include="Protos\Dto\User\Response\GetUserByEmailResponse.proto" GrpcServices="None" />
+		<Protobuf Include="Protos\Dto\User\Response\CreateTokenResponse.proto" GrpcServices="None" />
 	</ItemGroup>
 
 	<ItemGroup Label="Models">

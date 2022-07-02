@@ -12,6 +12,9 @@ import "Protos/Dto/User/Response/GetUserResponse.proto";
 import "Protos/Dto/User/Request/GetUserByEmailRequest.proto";
 import "Protos/Dto/User/Response/GetUserByEmailResponse.proto";
 
+import "Protos/Dto/User/Request/CreateTokenRequest.proto";
+import "Protos/Dto/User/Response/CreateTokenResponse.proto";
+
 service UserServices 
 {
 	// AddUser
@@ -25,4 +28,8 @@ service UserServices
 	// GetUserByEmail
 	rpc GetUserByEmail (Protos.Dto.User.Request.GetUserByEmailRequest)
 	returns (Protos.Dto.User.Response.GetUserByEmailResponse);
+
+	// CreateToken
+	rpc CreateToken (Protos.Dto.User.Request.CreateTokenRequest)
+	returns (Protos.Dto.User.Response.CreateTokenResponse);
 }

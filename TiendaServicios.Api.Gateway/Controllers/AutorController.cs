@@ -2,7 +2,7 @@
 
 [ApiController]
 [Route("api/autores")]
-[Authorize]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class AutorController : ControllerBase
 {
     private AutorServices.AutorServicesClient CreateClient()
