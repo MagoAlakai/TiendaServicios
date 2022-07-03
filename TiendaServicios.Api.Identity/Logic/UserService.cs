@@ -5,7 +5,6 @@ public class UserService : UserServices.UserServicesBase
     private readonly ContextoIdentity _identityContext;
     private readonly ILogger<UserService> _logger;
     private readonly IConfiguration _configuration;
-    public string user_token { get; set; } = default!;
 
     public UserService(ContextoIdentity? identityContext, ILogger<UserService>? logger, IConfiguration config)
     {
@@ -66,12 +65,14 @@ public class UserService : UserServices.UserServicesBase
 
     public override async Task<AddUserResponse> AddUser(AddUserRequest request, ServerCallContext context)
     {
+        request.UserModel.Password = Data.EncryptingPasswordFactory.EncodePasswordToBase64(request.UserModel.Password);
         User user = request.UserModel.MapToAddUserModelFromRequest();
 
         _identityContext.Add(user);
         await _identityContext.SaveChangesAsync();
 
         UserModel user_model = user.MapToUserModel();
+        user_model.Password = Data.EncryptingPasswordFactory.DecodeFrom64(user_model.Password);
 
         AddUserResponse add_user_response = user_model is null
             ? new AddUserResponse
@@ -90,34 +91,19 @@ public class UserService : UserServices.UserServicesBase
 
     public override async Task<CreateTokenResponse> CreateToken(CreateTokenRequest request, ServerCallContext context)
     {
-        User? user = await _identityContext.User.Where(x => x.Email == request.Email && x.Password == request.Password).FirstOrDefaultAsync();
+        string? user_token = default!;
+
+        User? user = await _identityContext.User.Where(x => x.Email == request.Email).FirstOrDefaultAsync();
         if (user is null)
         {
             throw new RpcException(new Status(StatusCode.NotFound, $"User with Email={request.Email} is not found"));
         }
 
-        if ( user.Email is not null && user.Password is not null)
-        {
-            //create claims details based on the user information
-            Claim[] claims = new[] {
-                        new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
-                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("Email", user.Email),
-                        new Claim("Password", user.Password),
-                    };
-
-            SymmetricSecurityKey key = new(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            SigningCredentials signIn = new(key, SecurityAlgorithms.HmacSha256);
-            JwtSecurityToken token = new(
-                _configuration["Jwt:Issuer"],
-                _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(30),
-                signingCredentials: signIn);
-
-            user_token = new JwtSecurityTokenHandler().WriteToken(token);
+        if (Data.EncryptingPasswordFactory.DecodeFrom64(user.Password) == request.Password){
+            string encrypted_password = user.Password;
+            user_token = BuildToken(request.Email, encrypted_password);
         }
+        
         CreateTokenResponse create_user_response = user_token is null
                 ? new CreateTokenResponse
                 {
@@ -130,5 +116,31 @@ public class UserService : UserServices.UserServicesBase
                     Token = user_token
                 };
         return create_user_response;
+    }
+
+    public string? BuildToken(string Email, string Password)
+    {
+        if (Email is null || Password is null) { return null; }
+
+        //create claims details based on the user information
+        Claim[] claims = new[] {
+                        new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                        new Claim("Email", Email),
+                        new Claim("Password", Password),
+                    };
+
+        SymmetricSecurityKey key = new(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        SigningCredentials signIn = new(key, SecurityAlgorithms.HmacSha256);
+        JwtSecurityToken token = new(
+            _configuration["Jwt:Issuer"],
+            _configuration["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.UtcNow.AddMinutes(30),
+            signingCredentials: signIn);
+
+        string user_token = new JwtSecurityTokenHandler().WriteToken(token);
+        return user_token;
     }
 }
