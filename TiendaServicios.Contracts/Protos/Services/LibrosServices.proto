@@ -3,40 +3,40 @@ syntax = "proto3";
 package Protos.Services;
 option csharp_namespace = "TiendaServicios.Contracts.Protos.Services";
 
-import "Protos/Dto/Autor/Request/GetAutorRequest.proto";
-import "Protos/Dto/Autor/Response/GetAutorResponse.proto";
+import "Protos/Dto/Libro/Request/GetLibroRequest.proto";
+import "Protos/Dto/Libro/Response/GetLibroResponse.proto";
 
-import "Protos/Dto/Autor/Request/GetAllAutorsRequest.proto";
-import "Protos/Dto/Autor/Response/AutorModelListResponse.proto";
+import "Protos/Dto/Libro/Request/GetAllLibrosRequest.proto";
+import "Protos/Dto/Libro/Response/LibroModelListResponse.proto";
 
-import "Protos/Dto/Autor/Request/AddAutorRequest.proto";
-import "Protos/Dto/Autor/Response/AddAutorResponse.proto";
+import "Protos/Dto/Libro/Request/AddLibroRequest.proto";
+import "Protos/Dto/Libro/Response/AddLibroResponse.proto";
 
-import "Protos/Dto/Autor/Request/UpdateAutorRequest.proto";
-import "Protos/Dto/Autor/Response/UpdateAutorResponse.proto";
+import "Protos/Dto/Libro/Request/UpdateLibroRequest.proto";
+import "Protos/Dto/Libro/Response/UpdateLibroResponse.proto";
 
-import "Protos/Dto/Autor/Request/DeleteAutorRequest.proto";
-import "Protos/Dto/Autor/Response/DeleteAutorResponse.proto";
+import "Protos/Dto/Libro/Request/DeleteLibroRequest.proto";
+import "Protos/Dto/Libro/Response/DeleteLibroResponse.proto";
 
-service AutorServices 
+service LibrosServices 
 {
-	// GetAutor
-	rpc GetAutor (Protos.Dto.Autor.Request.GetAutorRequest)
-	returns (Protos.Dto.Autor.Response.GetAutorResponse);
+	// GetLibro
+	rpc GetLibro (Protos.Dto.Libro.Request.GetLibroRequest)
+	returns (Protos.Dto.Libro.Response.GetLibroResponse);
 
-	// GetAllAutors
-	rpc GetAllAutors (Protos.Dto.Autor.Request.GetAllAutorsRequest)
-	returns (Protos.Dto.Autor.Response.AutorModelListResponse);
+	// GetAllLibros
+	rpc GetAllLibros (Protos.Dto.Libro.Request.GetAllLibrosRequest)
+	returns (Protos.Dto.Libro.Response.LibroModelListResponse);
 
-	// AddAutor
-	rpc AddAutor (Protos.Dto.Autor.Request.AddAutorRequest)
-	returns (Protos.Dto.Autor.Response.AddAutorResponse);
+	// AddLibro
+	rpc AddLibro (Protos.Dto.Libro.Request.AddLibroRequest)
+	returns (Protos.Dto.Libro.Response.AddLibroResponse);
 
-	// UpdateAutor
-	rpc UpdateAutor (Protos.Dto.Autor.Request.UpdateAutorRequest)
-	returns (Protos.Dto.Autor.Response.UpdateAutorResponse);
+	// UpdateLibro
+	rpc UpdateLibro (Protos.Dto.Libro.Request.UpdateLibroRequest)
+	returns (Protos.Dto.Libro.Response.UpdateLibroResponse);
 
-	// DeleteAutor
-	rpc DeleteAutor (Protos.Dto.Autor.Request.DeleteAutorRequest)
-	returns (Protos.Dto.Autor.Response.DeleteAutorResponse);
+	// DeleteLibro
+	rpc DeleteLibro (Protos.Dto.Libro.Request.DeleteLibroRequest)
+	returns (Protos.Dto.Libro.Response.DeleteLibroResponse);
 }
