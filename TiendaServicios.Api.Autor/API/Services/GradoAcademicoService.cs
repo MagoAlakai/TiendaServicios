@@ -1,4 +1,4 @@
-﻿namespace TiendaServicios.Api.Autor.Logic;
+﻿namespace TiendaServicios.Api.Autor.API.Services;
 public class GradoAcademicoService : GradoAcademicoServices.GradoAcademicoServicesBase
 {
     private readonly ContextoAutor _autorsContext;

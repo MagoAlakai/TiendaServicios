@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.Net;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

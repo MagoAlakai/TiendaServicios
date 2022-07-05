@@ -1,4 +1,7 @@
-﻿namespace TiendaServicios.Api.Autor.Logic;
+﻿using TiendaServicios.Api.Autor.Logic.Commands;
+using TiendaServicios.Api.Autor.Logic.Commands.Autor;
+
+namespace TiendaServicios.Api.Autor.API.Services;
 
 public class AutorService : AutorServices.AutorServicesBase
 {
@@ -58,26 +61,11 @@ public class AutorService : AutorServices.AutorServicesBase
 
     public override async Task<AddAutorResponse> AddAutor(AddAutorRequest request, ServerCallContext context)
     {
-        AutorLibro autor = request.AutorModel.MapToAddAutorModelFromRequest();
-
-        _autorsContext.Add(autor);
-        await _autorsContext.SaveChangesAsync();
-
-        AutorModel autor_model = autor.MapToAutorModel();
-
-        AddAutorResponse add_autor_response = autor_model is null
-            ? new AddAutorResponse
-            {
-                Success = false,
-                AutorModel = autor_model,
-            }
-            : new AddAutorResponse
-            {
-                Success = true,
-                AutorModel = autor_model,
-            };
-
-        return add_autor_response;
+        AddAutorCommand command = new(request, _autorsContext); // arrange
+        CommandValueObject<AddAutorResponse> response = await command.RunCommandAsync(); // act
+        return response.IsSuccessfull is false // assert
+            ? throw new RpcException(new Status(StatusCode.Internal, response.Error))
+            : response.Value;
     }
 
     public override async Task<UpdateAutorResponse> UpdateAutor(UpdateAutorRequest request, ServerCallContext context)
