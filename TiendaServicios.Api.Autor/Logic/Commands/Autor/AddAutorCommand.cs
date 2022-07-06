@@ -1,5 +1,4 @@
 ﻿namespace TiendaServicios.Api.Autor.Logic.Commands.Autor;
-
 public sealed class AddAutorCommand : ICommand<AddAutorResponse, AddAutorRequest>
 {
     private readonly AddAutorRequest _request;
@@ -17,12 +16,6 @@ public sealed class AddAutorCommand : ICommand<AddAutorResponse, AddAutorRequest
 
         _ctx.Add(autor);
         await _ctx.SaveChangesAsync();
-
-        //bool failed_becuse_of_network = true;
-        //if (failed_becuse_of_network is true)
-        //{
-        //    CommandValueObject<AddAutorResponse>.Failed("Record was not created becaus eof network failure");
-        //}
 
         AutorModel autor_model = autor.MapToAutorModel();
 

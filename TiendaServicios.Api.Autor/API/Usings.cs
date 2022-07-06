@@ -4,8 +4,6 @@ global using Mapster;
 global using Microsoft.EntityFrameworkCore;
 global using TiendaServicios.Api.Autor.API.Services;
 global using TiendaServicios.Api.Autor.Database;
-global using TiendaServicios.Api.Autor.Logic.Commands;
-global using TiendaServicios.Api.Autor.Logic.Queries;
 global using TiendaServicios.Api.Autor.Mapping;
 global using TiendaServicios.Api.Autor.Models;
 global using TiendaServicios.Contracts.Protos.Dto.Autor.Request;
