@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
+	<PackageReference Include="coverlet.collector" Version="3.1.2">
+		<PrivateAssets>all</PrivateAssets>
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TiendaServicios.Api.Autor\TiendaServicios.Api.Autor.csproj" />
+    <ProjectReference Include="..\TiendaServicios.Api.Carrito\TiendaServicios.Api.Carrito.csproj" />
+    <ProjectReference Include="..\TiendaServicios.Api.Identity\TiendaServicios.Api.Identity.csproj" />
+    <ProjectReference Include="..\TiendaServicios.Api.Libro\TiendaServicios.Api.Libro.csproj" />
+  </ItemGroup>
+
+</Project>
