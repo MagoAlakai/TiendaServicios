@@ -10,10 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="API\Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Infrastructure\tienda-svc.pfx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\launchSettings.json" />
   </ItemGroup>
 
   <ItemGroup>

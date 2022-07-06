@@ -13,18 +13,18 @@ public class AutorService : AutorServices.AutorServicesBase
 
     public override async Task<GetAutorResponse> GetAutor(GetAutorRequest request, ServerCallContext context)
     {
-        GetAutorQuery query = new(request, _autorsContext); // arrange
-        QueryValueObject<GetAutorResponse> response = await query.RunQueryAsync(); // act
-        return response.IsSuccessfull is false // assert
+        GetAutorQuery query = new(request, _autorsContext);
+        QueryValueObject<GetAutorResponse> response = await query.RunQueryAsync();
+        return response.IsSuccessfull is false
             ? throw new RpcException(new Status(StatusCode.Internal, response.Error))
             : response.Value;
     }
 
     public override async Task<AutorModelListResponse> GetAllAutors(GetAllAutorsRequest request, ServerCallContext context)
     {
-        GetAllAutorsQuery query = new(request, _autorsContext); // arrange
-        QueryValueObject<AutorModelListResponse> response = await query.RunQueryAsync(); // act
-        return response.IsSuccessfull is false // assert
+        GetAllAutorsQuery query = new(request, _autorsContext);
+        QueryValueObject<AutorModelListResponse> response = await query.RunQueryAsync();
+        return response.IsSuccessfull is false
             ? throw new RpcException(new Status(StatusCode.Internal, response.Error))
             : response.Value;
     }

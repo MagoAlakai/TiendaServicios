@@ -10,9 +10,17 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="appsettings.Tests.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Content Include="Infrastructure\tienda-svc.pfx">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="appsettings.Tests.json" />
 	</ItemGroup>
 
 	<ItemGroup>
