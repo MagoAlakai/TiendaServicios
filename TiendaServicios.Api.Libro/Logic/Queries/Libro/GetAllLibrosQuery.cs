@@ -1,6 +1,6 @@
 ﻿namespace TiendaServicios.Api.Libro.Logic.Queries.Libro;
 
-public class GetAllLibrosQuery : IQuery<LibroModelListResponse, GetAllLibrosRequest>
+public sealed class GetAllLibrosQuery : IQuery<LibroModelListResponse, GetAllLibrosRequest>
 {
     private readonly GetAllLibrosRequest _request;
     private readonly ContextoLibreria _ctx;

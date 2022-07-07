@@ -1,6 +1,6 @@
 ﻿namespace TiendaServicios.Api.Libro.Logic.Commands.Libro;
 
-public class UpdateLibroCommand : ICommand<UpdateLibroResponse, UpdateLibroRequest>
+public sealed class UpdateLibroCommand : ICommand<UpdateLibroResponse, UpdateLibroRequest>
 {
     private readonly UpdateLibroRequest _request;
     private readonly ContextoLibreria _ctx;

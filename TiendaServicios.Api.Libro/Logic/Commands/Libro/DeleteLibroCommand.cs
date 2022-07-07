@@ -1,6 +1,6 @@
 ﻿namespace TiendaServicios.Api.Libro.Logic.Commands.Libro;
 
-public class DeleteLibroCommand : ICommand<DeleteLibroResponse, DeleteLibroRequest>
+public sealed class DeleteLibroCommand : ICommand<DeleteLibroResponse, DeleteLibroRequest>
 {
     private readonly DeleteLibroRequest _request;
     private readonly ContextoLibreria _ctx;

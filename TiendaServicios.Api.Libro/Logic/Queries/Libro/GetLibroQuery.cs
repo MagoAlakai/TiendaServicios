@@ -1,5 +1,5 @@
 ﻿namespace TiendaServicios.Api.Libro.Logic.Queries.Libro;
-public class GetLibroQuery : IQuery<GetLibroResponse, GetLibroRequest>
+public sealed class GetLibroQuery : IQuery<GetLibroResponse, GetLibroRequest>
 {
     private readonly GetLibroRequest _request;
     private readonly ContextoLibreria _ctx;

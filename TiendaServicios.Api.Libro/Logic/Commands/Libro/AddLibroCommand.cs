@@ -1,5 +1,5 @@
 ﻿namespace TiendaServicios.Api.Libro.Logic.Commands.Libro;
-public class AddLibroCommand : ICommand<AddLibroResponse, AddLibroRequest>
+public sealed class AddLibroCommand : ICommand<AddLibroResponse, AddLibroRequest>
 {
     private readonly AddLibroRequest _request;
     private readonly ContextoLibreria _ctx;

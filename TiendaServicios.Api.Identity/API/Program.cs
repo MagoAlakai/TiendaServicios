@@ -1,3 +1,5 @@
+using TiendaServicios.Api.Identity.API.Services;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ContextoIdentity>(options

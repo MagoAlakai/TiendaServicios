@@ -1,4 +1,4 @@
-﻿{
+{
   "profiles": {
     "TiendaServicios.Api.Gateway": {
       "commandName": "Project",
@@ -16,6 +16,3 @@
     }
   }
 }
-
-
-

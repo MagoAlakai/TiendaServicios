@@ -1,4 +1,4 @@
-﻿namespace TiendaServicios.Api.Identity.Logic;
+﻿namespace TiendaServicios.Api.Identity.API.Services;
 
 public class UserService : UserServices.UserServicesBase
 {
@@ -15,78 +15,29 @@ public class UserService : UserServices.UserServicesBase
 
     public override async Task<GetUserResponse> GetUser(GetUserRequest request, ServerCallContext context)
     {
-        User? user = await _identityContext.User.FindAsync(request.UserId);
-        if (user is null)
-        {
-            throw new RpcException(new Status(StatusCode.NotFound, $"User with ID={request.UserId} is not found"));
-        }
-
-        UserModel user_model = user.MapToUserModel();
-
-        GetUserResponse get_user_response = user_model is null
-            ? new GetUserResponse
-            {
-                Success = false,
-                UserModel = user_model,
-            }
-            : new GetUserResponse
-            {
-                Success = true,
-                UserModel = user_model,
-            };
-
-        return get_user_response;
+        GetUserQuery query = new(request, _identityContext);
+        QueryValueObject<GetUserResponse> response = await query.RunQueryAsync();
+        return response.IsSuccessfull is false
+            ? throw new RpcException(new Status(StatusCode.Internal, response.Error))
+            : response.Value;
     }
 
     public override async Task<GetUserByEmailResponse> GetUserByEmail(GetUserByEmailRequest request, ServerCallContext context)
     {
-        User? user = await _identityContext.User.Where(x =>x.Email == request.UserEmail).FirstOrDefaultAsync();
-        if (user is null)
-        {
-            throw new RpcException(new Status(StatusCode.NotFound, $"User with Email={request.UserEmail} is not found"));
-        }
-
-        UserModel user_model = user.MapToUserModel();
-
-        GetUserByEmailResponse get_user_by_email_response = user_model is null
-            ? new GetUserByEmailResponse
-            {
-                Success = false,
-                UserModel = user_model,
-            }
-            : new GetUserByEmailResponse
-            {
-                Success = true,
-                UserModel = user_model,
-            };
-
-        return get_user_by_email_response;
+        GetUserByEmailQuery query = new(request, _identityContext);
+        QueryValueObject<GetUserByEmailResponse> response = await query.RunQueryAsync();
+        return response.IsSuccessfull is false
+            ? throw new RpcException(new Status(StatusCode.Internal, response.Error))
+            : response.Value;
     }
 
     public override async Task<AddUserResponse> AddUser(AddUserRequest request, ServerCallContext context)
     {
-        request.UserModel.Password = Data.EncryptingPasswordFactory.EncodePasswordToBase64(request.UserModel.Password);
-        User user = request.UserModel.MapToAddUserModelFromRequest();
-
-        _identityContext.Add(user);
-        await _identityContext.SaveChangesAsync();
-
-        UserModel user_model = user.MapToUserModel();
-        user_model.Password = Data.EncryptingPasswordFactory.DecodeFrom64(user_model.Password);
-
-        AddUserResponse add_user_response = user_model is null
-            ? new AddUserResponse
-            {
-                Success = false,
-                UserModel = user_model,
-            }
-            : new AddUserResponse
-            {
-                Success = true,
-                UserModel = user_model,
-            };
-
-        return add_user_response;
+        AddUserCommand command = new(request, _identityContext);
+        CommandValueObject<AddUserResponse> response = await command.RunCommandAsync();
+        return response.IsSuccessfull is false
+            ? throw new RpcException(new Status(StatusCode.Internal, response.Error))
+            : response.Value;
     }
 
     public override async Task<CreateTokenResponse> CreateToken(CreateTokenRequest request, ServerCallContext context)
@@ -99,11 +50,12 @@ public class UserService : UserServices.UserServicesBase
             throw new RpcException(new Status(StatusCode.NotFound, $"User with Email={request.Email} is not found"));
         }
 
-        if (Data.EncryptingPasswordFactory.DecodeFrom64(user.Password) == request.Password){
+        if (Data.EncryptingPasswordFactory.DecodeFrom64(user.Password) == request.Password)
+        {
             string encrypted_password = user.Password;
             user_token = BuildToken(request.Email, encrypted_password);
         }
-        
+
         CreateTokenResponse create_user_response = user_token is null
                 ? new CreateTokenResponse
                 {
